@@ -1,0 +1,50 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Task API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Information about the API",
+        "responses": {
+          "200": {
+            "description": "The name, version and endpoints of the API",
+            "content": {
+              "application/json": {
+                "example": {
+                  "name": "Task API",
+                  "version": "1.0",
+                  "endpoints": ["/tasks"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Check that the server is alive",
+        "responses": {
+          "200": {
+            "description": "The server is running",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
