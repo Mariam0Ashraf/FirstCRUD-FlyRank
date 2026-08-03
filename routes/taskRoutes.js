@@ -18,4 +18,16 @@ router.get("/:id", (req, res) => {
   res.json(task);
 });
 
+router.post("/", (req, res) => {
+  const { title } = req.body || {};
+
+  if (!taskService.isValidTitle(title)) {
+    return res.status(400).json({ error: "Title is required" });
+  }
+
+  const task = taskService.createTask(title);
+
+  res.status(201).json(task);
+});
+
 module.exports = router;

@@ -8,7 +8,17 @@ function getTaskById(id) {
   return taskRepository.findById(id);
 }
 
+function isValidTitle(title) {
+  return typeof title === "string" && title.trim() !== "";
+}
+
+function createTask(title) {
+  return taskRepository.create(title.trim());
+}
+
 module.exports = {
   getAllTasks,
   getTaskById,
+  isValidTitle,
+  createTask,
 };
