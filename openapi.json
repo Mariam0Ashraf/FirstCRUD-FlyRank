@@ -48,7 +48,25 @@
     },
     "/tasks": {
       "get": {
-        "summary": "Get all tasks",
+        "summary": "Get all tasks, filtered by done or search",
+        "parameters": [
+          {
+            "name": "done",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "The list of tasks",
@@ -187,7 +205,7 @@
         }
       },
       "delete": {
-        "summary": "Delete a task",
+        "summary": "Delete a task by id",
         "parameters": [
           {
             "name": "id",
@@ -207,6 +225,44 @@
             "content": {
               "application/json": {
                 "example": { "error": "Task 99 not found" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stats": {
+      "get": {
+        "summary": "Count the tasks",
+        "responses": {
+          "200": {
+            "description": "How many tasks are done and open",
+            "content": {
+              "application/json": {
+                "example": { "total": 3, "done": 1, "open": 2 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reset": {
+      "post": {
+        "summary": "Restore the 3 example tasks",
+        "responses": {
+          "200": {
+            "description": "The example tasks",
+            "content": {
+              "application/json": {
+                "example": [
+                  { "id": 1, "title": "Learn Express", "done": true },
+                  { "id": 2, "title": "Build a CRUD API", "done": false },
+                  {
+                    "id": 3,
+                    "title": "Push the project to GitHub",
+                    "done": false
+                  }
+                ]
               }
             }
           }

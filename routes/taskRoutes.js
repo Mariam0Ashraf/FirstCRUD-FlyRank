@@ -4,7 +4,17 @@ const taskService = require("../services/taskService");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.json(taskService.getAllTasks());
+  const filters = {};
+
+  if (req.query.done !== undefined) {
+    filters.done = req.query.done === "true";
+  }
+
+  if (req.query.search !== undefined) {
+    filters.search = req.query.search;
+  }
+
+  res.json(taskService.getAllTasks(filters));
 });
 
 router.get("/:id", (req, res) => {
