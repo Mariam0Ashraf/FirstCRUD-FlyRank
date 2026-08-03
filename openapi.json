@@ -45,6 +45,57 @@
           }
         }
       }
+    },
+    "/tasks": {
+      "get": {
+        "summary": "Get all tasks",
+        "responses": {
+          "200": {
+            "description": "The list of tasks",
+            "content": {
+              "application/json": {
+                "example": [
+                  { "id": 1, "title": "Learn Express", "done": true },
+                  { "id": 2, "title": "Build a CRUD API", "done": false }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "summary": "Get one task by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The task with that id",
+            "content": {
+              "application/json": {
+                "example": { "id": 1, "title": "Learn Express", "done": true }
+              }
+            }
+          },
+          "404": {
+            "description": "No task has that id",
+            "content": {
+              "application/json": {
+                "example": { "error": "Task 99 not found" }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
