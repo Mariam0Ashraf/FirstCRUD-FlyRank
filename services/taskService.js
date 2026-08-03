@@ -16,9 +16,19 @@ function createTask(title) {
   return taskRepository.create(title.trim());
 }
 
+function updateTask(id, changes) {
+  return taskRepository.update(id, changes);
+}
+
+function deleteTask(id) {
+  return taskRepository.remove(id);
+}
+
 module.exports = {
   getAllTasks,
   getTaskById,
   isValidTitle,
   createTask,
+  updateTask,
+  deleteTask,
 };

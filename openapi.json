@@ -131,6 +131,86 @@
             }
           }
         }
+      },
+      "put": {
+        "summary": "Update the title and/or done of a task",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "title": "Buy milk and bread",
+                "done": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated task",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 4,
+                  "title": "Buy milk and bread",
+                  "done": true
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The body is empty or invalid",
+            "content": {
+              "application/json": {
+                "example": { "error": "Title or done is required" }
+              }
+            }
+          },
+          "404": {
+            "description": "No task has that id",
+            "content": {
+              "application/json": {
+                "example": { "error": "Task 99 not found" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a task",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The task was deleted"
+          },
+          "404": {
+            "description": "No task has that id",
+            "content": {
+              "application/json": {
+                "example": { "error": "Task 99 not found" }
+              }
+            }
+          }
+        }
       }
     }
   }

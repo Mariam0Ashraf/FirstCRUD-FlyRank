@@ -23,8 +23,40 @@ function create(title) {
   return task;
 }
 
+function update(id, changes) {
+  const task = findById(id);
+
+  if (!task) {
+    return undefined;
+  }
+
+  if (changes.title !== undefined) {
+    task.title = changes.title;
+  }
+
+  if (changes.done !== undefined) {
+    task.done = changes.done;
+  }
+
+  return task;
+}
+
+function remove(id) {
+  const index = tasks.findIndex((task) => task.id === id);
+
+  if (index === -1) {
+    return false;
+  }
+
+  tasks.splice(index, 1);
+
+  return true;
+}
+
 module.exports = {
   findAll,
   findById,
   create,
+  update,
+  remove,
 };
