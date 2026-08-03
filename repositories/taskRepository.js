@@ -1,8 +1,10 @@
 function exampleTasks() {
   return [
-    { id: 1, title: "Learn Express", done: true },
-    { id: 2, title: "Build a CRUD API", done: false },
-    { id: 3, title: "Push the project to GitHub", done: false },
+    
+    { id: 1, title: "Build a CRUD API", done: false },
+    { id: 2, title: "Push the project to GitHub", done: false },
+    { id: 3, title: "Fly to SARAJEVO with Mom", done: false },
+
   ];
 }
 

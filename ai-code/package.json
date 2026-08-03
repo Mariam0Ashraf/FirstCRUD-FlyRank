@@ -1,0 +1,14 @@
+{
+  "name": "ai-code-task-api",
+  "version": "1.0.0",
+  "description": "AI generated version of the Task API, kept separate from the hand-built one",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
